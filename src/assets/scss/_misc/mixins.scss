@@ -1,0 +1,134 @@
+@mixin box-shadow($meanings) {
+	-webkit-box-shadow: $meanings;
+	-moz-box-shadow: $meanings;
+	box-shadow: $meanings;
+}
+
+%clearfix{
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+
+%befo_va_mid{
+	&:before {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		height: 100%;
+	}
+}
+
+@mixin max-min-hw($pr) {
+	max-width: $pr;
+	max-height: $pr;
+	min-height: $pr;
+	min-width: $pr;
+}
+
+
+%bg-position{
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+
+@function rem($px) {
+	@return $px / 16px + 0rem;
+}
+
+@mixin placeholder{
+	&::-webkit-input-placeholder {@content;}
+	&::-moz-placeholder          {@content;}
+	&:-moz-placeholder           {@content;}
+	&:-ms-input-placeholder      {@content;}
+}
+
+
+@mixin triangle($height, $width, $color, $position: bottom){
+	@if $position == bottom{
+		border-bottom: $height solid $color;
+		border-left: ($width/2) solid transparent;
+		border-right: ($width/2) solid transparent; 
+	}
+	@if $position == top{
+		border-top: $height solid $color;
+		border-left: ($width/2) solid transparent;
+		border-right: ($width/2) solid transparent; 
+	}
+	@if $position == left{
+		border-left: $height solid $color;
+		border-top: ($width/2) solid transparent;
+		border-bottom: ($width/2) solid transparent; 
+	}
+	@if $position == right{
+		border-right: $height solid $color;
+		border-top: ($width/2) solid transparent;
+		border-bottom: ($width/2) solid transparent; 
+	}
+}
+
+// @mixin maxwidh {
+// 	@media screen and (min-width: 1201px) {
+// 		@content;
+// 	}
+// }
+
+
+@mixin desktop {
+	@media screen and (max-width: 1200px) {
+		@content;
+	}
+}
+
+@mixin laptop {
+	@media screen and (max-width: 992px) {
+		@content;
+	}
+}
+
+
+@mixin tablets {
+	@media screen and (max-width: 768px) {
+		@content;
+	}
+}
+
+
+@mixin phones {
+	@media screen and (max-width: 480px) {
+		@content;
+	}
+}
+
+@mixin center_absolute($pos: 'both'){
+	position:absolute; 
+
+	@if $pos == 'both'{
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	@if $pos == 'x'{
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	@if $pos == 'y'{
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+}
+
+@mixin font_set($col, $ff, $fw, $fs,){
+	color: $col;
+	font-family: $ff;
+	font-weight: $fw;
+	font-size: rem($fs);
+}
