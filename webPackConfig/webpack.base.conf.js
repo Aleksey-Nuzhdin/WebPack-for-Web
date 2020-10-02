@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const fs = require('fs')
 const { VueLoaderPlugin } = require('vue-loader')
-//const { FALSE } = require('node-sass')
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -22,7 +21,6 @@ module.exports = {
     },
     entry:{
       main: PATHS.src,
-      lk: `${PATHS.src}/lk.js`
     }, 
     output: {
       path: PATHS.dist,
@@ -122,7 +120,7 @@ module.exports = {
           // это применяется к `<template lang="pug">` в компонентах Vue
           {
             resourceQuery: /^\?vue/,
-            use: ['pug-plain-loader']
+            use: ['pug-plain-loader'] //pug-loader не поддерживается Vue
           },
           // это применяется к импортам pug внутри JavaScript
           {
@@ -132,8 +130,6 @@ module.exports = {
             }
           }
         ],
-
-
       },
       ]
     }

@@ -14,5 +14,3 @@ const app = new Vue({
   el:'#app'
 })
 
-import './modules/ts.module';
-
